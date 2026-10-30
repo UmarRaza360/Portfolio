@@ -1,0 +1,403 @@
+/**
+ * TERMINAL & CLI STYLES
+ * High-end VS Code & Developer Shell Interface
+ */
+
+/* Loading Screen Boot Terminal */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+}
+
+.loading-screen.is-loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-terminal-window {
+  width: 100%;
+  max-width: 640px;
+  background: #0d0d10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 169, 107, 0.08);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal-header {
+  background: #141418;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.terminal-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminal-dot.close { background: #ff5f56; }
+.terminal-dot.min { background: #ffbd2e; }
+.terminal-dot.max { background: #27c93f; }
+
+.terminal-title {
+  font-size: 0.75rem;
+  color: #888892;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-body {
+  padding: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #d1d5db;
+  min-height: 220px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.terminal-line {
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  word-break: break-all;
+}
+
+.terminal-line .t-prompt {
+  color: var(--color-accent);
+  font-weight: 600;
+  user-select: none;
+}
+
+.terminal-line .t-cmd {
+  color: #f3f4f6;
+}
+
+.terminal-line .t-success {
+  color: #10b981;
+}
+
+.terminal-line .t-dim {
+  color: #6b7280;
+}
+
+.terminal-line .t-accent {
+  color: #00d284;
+}
+
+.terminal-line .t-warn {
+  color: #f59e0b;
+}
+
+/* Boot Progress Bar */
+.boot-progress-wrap {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.boot-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+.boot-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.boot-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #008060, #00d284);
+  border-radius: 9999px;
+  transition: width 0.15s ease-out;
+  box-shadow: 0 0 12px rgba(0, 210, 132, 0.4);
+}
+
+.boot-skip-btn {
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+  font-family: inherit;
+  font-size: 0.725rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  float: right;
+}
+
+.boot-skip-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Interactive Developer Terminal Widget in Hero / Special Section */
+.dev-terminal-widget {
+  background: #0d0e12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  font-family: 'JetBrains Mono', monospace;
+  overflow: hidden;
+}
+
+.dev-terminal-tabs {
+  display: flex;
+  align-items: center;
+  background: #121318;
+  padding: 0 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dev-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.95rem;
+  font-size: 0.75rem;
+  color: #71717a;
+  border-top: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-tab.active {
+  color: #f4f4f5;
+  background: #0d0e12;
+  border-top-color: var(--color-accent);
+}
+
+.dev-tab svg {
+  width: 14px;
+  height: 14px;
+}
+
+.dev-terminal-content {
+  padding: 1.25rem;
+  min-height: 280px;
+  font-size: 0.825rem;
+  line-height: 1.6;
+}
+
+.dev-cli-output {
+  color: #a1a1aa;
+  margin-bottom: 1rem;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.dev-cli-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dev-cli-prompt {
+  color: var(--color-accent);
+  font-weight: 600;
+  user-select: none;
+  font-size: 0.85rem;
+}
+
+.dev-cli-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.dev-cli-input::placeholder {
+  color: #52525b;
+}
+
+.dev-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.dev-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  padding: 0.2rem 0.55rem;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dev-chip:hover {
+  background: rgba(0, 169, 107, 0.12);
+  color: var(--color-accent);
+  border-color: rgba(0, 169, 107, 0.3);
+}
+
+/* Command Palette Modal (Ctrl+K) */
+.cmd-palette-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+}
+
+.cmd-palette-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cmd-palette-box {
+  width: 90%;
+  max-width: 600px;
+  background: #111116;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 169, 107, 0.15);
+  overflow: hidden;
+  transform: scale(0.96);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cmd-palette-backdrop.is-open .cmd-palette-box {
+  transform: scale(1);
+}
+
+.cmd-palette-input-wrap {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.75rem;
+}
+
+.cmd-palette-input-wrap svg {
+  color: #71717a;
+}
+
+.cmd-palette-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.cmd-palette-input::placeholder {
+  color: #71717a;
+}
+
+.cmd-palette-esc-key {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.45rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: #a1a1aa;
+}
+
+.cmd-palette-list {
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.cmd-palette-group-title {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #71717a;
+  padding: 0.5rem 0.75rem 0.25rem;
+  font-weight: 600;
+}
+
+.cmd-palette-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #d1d5db;
+  font-size: 0.875rem;
+  transition: all 0.15s ease;
+}
+
+.cmd-palette-item:hover,
+.cmd-palette-item.is-selected {
+  background: rgba(0, 169, 107, 0.12);
+  color: #ffffff;
+}
+
+.cmd-palette-item-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cmd-palette-item-icon {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+}
+
+.cmd-palette-item-shortcut {
+  font-size: 0.7rem;
+  color: #71717a;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
